@@ -159,7 +159,10 @@ def notify(ctx, source_system, source_entity, manifest_id):
 
     manifest.notify()
 
-    response = f"Manifest {manifest.id} notified"
+    if manifest.latest_response.status_code == 200:
+        response = f"Manifest {manifest.id} notified"
+    else:
+        response = manifest.latest_response.json()
 
     if ctx.obj['OUT']:
         util.write_to_file(ctx.obj['DIR'], f"{ctx.obj['OUT']}", response)
@@ -201,7 +204,10 @@ def add_entry(ctx, source_system, source_entity, manifest_id, source_file, batch
     else:
         manifest.add_entry(source_file)
 
-    response = f"Manifest entry added to manifest {manifest.id}"
+    if manifest.latest_response.status_code == 200:
+        response = f"Manifest entry added to manifest {manifest}"
+    else:
+        response = manifest.latest_response.json()
 
     if ctx.obj['OUT']:
         util.write_to_file(ctx.obj['DIR'], f"{ctx.obj['OUT']}", response)
@@ -243,7 +249,10 @@ def add_entries(ctx, source_system, source_entity, manifest_id, entries, file):
         entries_dict = json.load(f)
         manifest.add_entries(entries_dict)
 
-    response = f"Manifest entries added to manifest {manifest.id}"
+    if manifest.latest_response.status_code == 200:
+        response = f"Manifest entries added to manifest {manifest}"
+    else:
+        response = manifest.latest_response.json()
 
     if ctx.obj['OUT']:
         util.write_to_file(ctx.obj['DIR'], f"{ctx.obj['OUT']}", response)
