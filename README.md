@@ -35,6 +35,11 @@ export ADE_TENANT={tenant}
 export ADE_INSTALLATION={installation}
 export ADE_ENVIRONMENT={environment}
 
+# If you are using Windows PowerShell, use these instead
+$env:ADE_TENANT="{tenant}"
+$env:ADE_INSTALLATION="{installation}"
+$env:ADE_ENVIRONMENT="{environment}"
+
 # Or use --environment flag, for example, to switch between different environments in same tenant
 adenf --environment dev manifests search-manifests --s system --e test
 
