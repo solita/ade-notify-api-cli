@@ -17,7 +17,7 @@ setup(
         'Click==8.0.3',
         'requests',
         'wheel',
-        'adenotifier @ git+https://github.com/solita/adenotifier.git@v0.1.5#egg=adenotifier'
+        'adenotifier @ git+https://github.com/solita/adenotifier.git@v0.2.1#egg=adenotifier'
     ],
     entry_points={
         'console_scripts': [
